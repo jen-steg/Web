@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<!--
+      Name: Jennifer Stegina
+      Date:  12 February 2019
+      Description: MidTerm Catering Problem
+   -->
+<title>Investment Picks</title>
+<meta charset="utf-8" />
+<script>
+function updateInvestmentLink(urlText, urlValue) {
+	document.getElementById("recommendedInvestment").innerHTML =
+		urlText + " (Yahoo! Finance)";
+	document.getElementById("recommendedInvestment")
+	href = urlValue;
+}
+</script>
+</head>
+<body>
+<h1>Investment Picks</h1>
+<form action="upload" enctype="application/x-www-form-urlencoded">
+<p><input type="radio" name="industry" onclick="updateInvestmentLink
+		('Gold', ,http://finance.yahoo.com/q?s=^YHOh714')" />Basic Materials<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('General Electronic','http://finance.yahoo.com/q/pr?s=qe')" />Conglomerates<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Tyson Foods Inc.', 'http://finance.yahoo.com/q/pr?s=tsn')" />Consumer Goods<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Catalyst Health Solutions', 'http://finance.yahoo.com/q/pr?s=chsi')" />Financial<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Genetech Inc.', 'http://finance.yahoo.com/q/pr?s=dna')" />Healthcare<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Toll Brothers', 'http://finance.yahoo.com/q/pr?s=tol')" />Industrial Goods<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Sinclair Broadcast Group Inc.', 'http://finance.yahoo.com/q/pr?s=sbqi')" />Services<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Verizon Communications Inc.', 'http://finance.yahoo.com/q/pr?s=vz')" />Technology<br />
+	<input type="radio" name="industry" onclick="updateInvestmentLink
+		('Northwest Natural Gas Co.', 'http://finance.yahoo.com/q/pr?s=nwm')" />Utilities</p>
+		
+</form>
+<p><a href="http://finance.yahoo.com/" id="recommendedInvestment">Yahoo! Finance</a></p>
+</body>
+</html>
+	

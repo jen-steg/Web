@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Last Visit</title>
+</head>
+<body>
+<script type="text/javascript">
+/* <![CDATA[ */ 
+   
+   var counter = 1;
+if (document.cookie) {
+  var cookieString = decodeURIComponent(document.cookie);
+  var cookieArray = cookieString.split("; ");
+  counter = cookieArray[0].substring(cookieArray[0].indexOf("=") + 1, cookieArray[0].length);
+  lastVisit = cookieArray[1].substring(cookieArray[1].indexOf("=")+1, cookieArray[1].length);
+  document.write("<p>You have visited this page " + counter + " times.</p>");
+  document.write("<p>Your last visit was " + lastVisit + "</p>");
+}
+else {
+  document.write("<p>This is your first visit.</p>");
+}
+  var now = new Date();
+  var day = now.getDay();
+  var month = now.getMonth();
+  var date = now.getDate();
+  var year = now.getFullYear();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  if(minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  var seconds = now.getSeconds();
+  
+  if(seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  var days = new Array();
+   days[0] = "Sunday";
+   days[1] = "Monday";
+   days[2] = "Tuesday";
+   days[3] = "Wednesday";
+   days[4] = "Thursday";
+   days[5] = "Friday";
+   days[6] = "Saturday";
+  
+   var amPM = (hours > 11) ? "pm" : "am";
+
+   var thisVisit = days[day] + " " + month + "/" + date + "/" + year + " at " + hours + ":" + minutes + ":" + seconds + " " +amPM;
+   document.cookie = "NumVisit=" + (counter * 1  + 1);
+   document.cookie = "lastDate=" + encodeURIComponent(thisVisit);
+
+/* ]]> */ 
+</script>
+</body>
+</html>

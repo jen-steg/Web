@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<!--
+	Name: Student
+	Date: 2/9/19
+	Description: Midterm - Catering
+	-->
+	<meta charset="utf-8" />
+	<title>Wedding Catering</title>
+</head>
+<body>
+	<h1>Wedding Catering</h1>
+	<form id="cateringForm">
+		<p>
+			Name: <input type="text" name="name" id="name"/><br/>
+			Email: <input type="text" name="email" id="email"/><br/>
+			Phone: <input type="text" name="phone" id="phone1"/>
+				   <input type="text" name="phone" id="phone2"/>
+				   <input type="text" name="phone" id="phone3"/><br/>
+			Guest Count: <input type="text" name="guestCount" id="guestCount"/><br/>
+		</p>
+		<p>
+			Service Style:<br/>
+				<input type="radio" name="service" id="buffet">Buffet - $25.00
+				<input type="radio" name="service" id="seated">Seated Server/Plated Dinner - $40.00
+				<input type="radio" name="service" id="cocktail">Cocktail only - $15.00<br/>
+		</p>
+		<p>
+			Cocktail Hour:<br/>
+				<input type="radio" name="cocktail" id="cHourYes">Yes ($2 per person)
+				<input type="radio" name="cocktail" id="cHourNo">No<br/>
+		</p>
+		<p>
+			Beverage Service:<br/>
+				<input type="checkbox" name="beverage" id="coffee"> Coffee Station ($2 per person)<br/>
+				<input type="checkbox" name="beverage" id="champagne">Champagne Toast ($1 per person)<br/>
+				<input type="checkbox" name="beverage" id="bar">Full Bar ($10 per person)<br/>
+				<input type="checkbox" name="beverage" id="softdrinks">Soft Drinks Only ($3 per person)<br/>
+		</p>
+		<p>
+			<span id="total"></span>
+		</p>
+		<p>
+			<input type="button" name="submit" id="submit" value="Submit"/>
+			<input type="button" name="clear" id="clear" value="Clear"/>
+		</p>
+	</form>
+	<script>
+		function validateSubmit(){
+			var guestCount = document.getElementById("guestCount").value * 1;
+			var inputs = document.getElementsByTagName("input");
+			var formComplete = true;
+			var phone1 = document.getElementById("phone1").value * 1;
+			var phone2 = document.getElementById("phone2").value * 1;
+			var phone3 = document.getElementById("phone3").value * 1;
+			
+			// check if phone values are numbers
+			if (isNaN(phone1) || isNaN(phone2) || isNaN(phone3)){
+				alert("Error: Phone inputs need to be a valid number.");
+			}
+			
+			// check if guest count value is a number
+			if (isNaN(guestCount)){
+				alert("Error: Guest Count input needs to be a valid number.");
+			}
+			
+			//check if inputs have value, except buttons
+			for (var i = 0 ; i < inputs.length; i++){
+				if (inputs[i].type!="button" && inputs[i].value == ""){
+					formComplete = false;
+					break;
+				}
+			}
+			
+			// alert if form not completed
+			if (!formComplete){
+				alert("Please ensure all fields are completed.");
+			} else{
+				calculateTotal();
+			}
+		}
+		
+		function calculateTotal(){
+			var sumTotal = 0;
+			var guestCount = document.getElementById("guestCount").value * 1;
+			
+			var buffet = document.getElementById("buffet");
+			var seated = document.getElementById("seated");
+			var cocktail = document.getElementById("cocktail");
+			var cocktailHour = document.getElementById("cHourYes");
+			var coffee = document.getElementById("coffee");
+			var champagne = document.getElementById("champagne");
+			var bar = document.getElementById("bar");
+			var softdrinks = document.getElementById("softdrinks");
+			
+			(buffet.checked) ? (sumTotal += (guestCount*25.00)) : (sumTotal += 0);
+			(seated.checked) ? (sumTotal += (guestCount*40.00)) : (sumTotal += 0);
+			(cocktail.checked) ? (sumTotal += (guestCount*15.00)) : (sumTotal += 0);
+			(cocktailHour.checked) ? (sumTotal += (guestCount*2.00)) : (sumTotal += 0);
+			(coffee.checked) ? (sumTotal += (guestCount*2.00)) : (sumTotal += 0);
+			(champagne.checked) ? (sumTotal += (guestCount*1.00)) : (sumTotal += 0);
+			(bar.checked) ? (sumTotal += (guestCount*10.00)) : (sumTotal += 0);
+			(softdrinks.checked) ? (sumTotal += (guestCount*3.00)) : (sumTotal += 0);
+
+			document.getElementById("total").innerHTML="Total Cost: $" + sumTotal.toFixed(2);
+		}
+		
+		function clearForm(){
+			var inputs = document.getElementsByTagName("input");
+			
+			//clear input elements, except buttons
+			for (var i = 0 ; i < inputs.length; i++){
+				if (inputs[i].type!="button"){
+					inputs[i].value="";
+					inputs[i].checked=false;
+				}
+			}
+			
+			// clear span element
+			document.getElementById("total").innerHTML="";
+		}
+		
+		function createEventListeners(){
+			document.getElementById("submit").addEventListener("click", validateSubmit);
+			document.getElementById("clear").addEventListener("click", clearForm);
+		}
+
+		window.addEventListener("load", createEventListeners, false);
+	</script>
+</body>
+</html>

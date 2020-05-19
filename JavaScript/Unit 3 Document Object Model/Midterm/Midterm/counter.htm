@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <!--
+          Name: Student
+		  Date: 2/9/2019
+		  Date: Midterm - Debug Counter
+		  
+		  Code should print out even numbers from 1 to 100 after storing even numbers into array.
+		  Must keep the code that stores and reads from the array and also prints out what it reads. Use the same variables for full credit and ensure that the code validates.
+	   -->
+	   <meta charset="utf-8" />
+	   <title>Midterm Exam Debug Question 1</title>
+	</head>
+	<body>
+		<h1>Debug Question 1</h1>
+		<script>
+		  var count = 1;    //declare counter
+		  var numbers = []; //declare empty array (this code is correct)
+		  var arrayIndex = 0
+		  while (count <= 100 ){
+				if( count % 2 == 0 ) {
+				   numbers[arrayIndex] = count;
+				   arrayIndex++;
+				}
+
+				++count;
+		  }
+		  for( var i = 0; i < numbers.length; i++ ) {
+				document.write(numbers[i] + " ");
+		  }
+		</script>
+	</body>
+</html>

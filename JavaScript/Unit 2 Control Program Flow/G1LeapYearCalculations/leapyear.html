@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      JavaScript 6th Edition
+      Unit 2
+      Graded Exercise 1
+
+      Author: Student
+      Date:   6/27/18
+
+      Filename: index.htm
+   -->
+   <meta charset="utf-8" />
+   <title>Unit 2: Graded Exercise 1</title>
+</head>
+<body>
+	<h1>Leap Year Calculator</h1>
+	<form id="leapyearForm">
+		<p>
+			Enter a year: <input type="text" id="yearsbox" name="years" /><br />
+		</p>
+		<input type="button" id="calculate" value="Calculate" />
+		<span id="results"></span>
+	</form>
+	<script>
+		function validateLeapYear() {
+			var years = document.getElementById("yearsbox");
+			var results = document.getElementById("results");
+			
+			//validation of years
+			if (isNaN( years.value) || years.value < 0 || years.value == "") {
+				window.alert("Please enter a valid year.");
+				years.value = "";
+				results.innerHTML = "";
+			} else { //if validation passes, calculation happens
+				if ((years.value % 4 == 0) && (years.value % 100 != 0) ||
+				(years.value % 400 == 0)) {
+					results.innerHTML = years.value + " is a leap year.";
+				} else {
+					results.innerHTML = years.value + " is a standard year.";
+				}
+			}
+		}
+		
+		function createEventListeners() {
+			document.getElementById("calculate").addEventListener("click", validateLeapYear);
+		}
+
+		window.addEventListener("load", createEventListeners, false);
+	</script>
+</body>
+</html>

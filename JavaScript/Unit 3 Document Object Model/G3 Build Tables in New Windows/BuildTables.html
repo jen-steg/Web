@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+button {
+    display: block;
+}
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+   <!--
+      Name: Jennifer Stegina
+      Date: 12 February 2019
+	  Description: Math Tables problem
+   -->
+	<meta charset="utf-8" />
+	<title>Math Tables</title>
+	</head>
+	<body>
+	<h2>Math Tables</h2>
+	<p>
+	<button type="button" name="additionTable" id="additionTable">Addition Table</button>
+	<button type="button" name="multiplicationTable" id="multiplicationTable">Multiplication Table</button>
+	</p>
+		<script>
+			function additionTable() {
+				var tableWin = window.open("", "mathTables", "toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no,width=500,height=400");
+				tableWin.document.open();
+				tableWin.document.write("<h1>Addition Table</h1>");
+				tableWin.document.write("<table border='1' width='100%'>");
+				tableWin.document.write("<tr><th>&nbsp;</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></th></tr>");
+				for (var i = 0; i < 11; i++ ) {
+					tableWin.document.write("<tr align='center'><td>" + i + "</td>");
+					for ( var k = 0; k < 11; k++ ) {
+						var curNum = i + k;
+						tableWin.document.write("<td>" + curNum + "</td>");
+					}
+					tableWin.document.write("</tr>");
+				}
+				tableWin.document.write("</table>");
+				tableWin.document.close();
+				tableWin.focus();
+			}
+			document.write("</tr>");
+			
+			function multiplicationTable() {
+				var tableWin = window.open("", "mathTables", "toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=no,width=475,height=400");
+				tableWin.document.open();
+				tableWin.document.write("<h1>Multiplication Table</h1>");
+				tableWin.document.write("<table border='1' width='100%'>");
+				tableWin.document.write("<tr><th>&nbsp;<th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></th></tr>");
+				for (var i = 0; i < 11; i++ ) {
+					tableWin.document.write("<tr align='center'><td>" + i + "</td>");
+					for ( var k = 0; k < 11; k++ ) {
+						var curNum = i * k;
+						tableWin.document.write("<td>" + curNum + "</td>");
+					}
+					tableWin.document.write("</tr>");
+				}
+				tableWin.document.write("</table>");
+				tableWin.document.close();
+				tableWin.focus();
+			}
+			
+			function createEventListener(){
+				var additionTableButton = document.getElementById("additionTable");
+				var multiplicationTableButton = document.getElementById("multiplicationTable");
+				if(additionTableButton.addEventListener){
+					additionTableButton.addEventListener("click", additionTable, false);
+				}
+				else if (submitButton.attachEvent){
+					submitButton.attachEvent("onclick", multiplicationTableTable);
+				}
+				if(multiplicationTableButton.addEventListener){
+					multiplicationTableButton.addEventListener("click", multiplicationTable, false);
+				}
+				else if (submitButton.attachEvent){
+					submitButton.attachEvent("onclick", multiplicationTable);
+				}
+			}
+			if (window.addEventListener){
+				window.addEventListener("load", createEventListener, false);
+			}
+			else if (window.attachEvent){
+				window.attachEvent("onload", createEventListener);
+			}
+			
+			function createEventListeners() {
+				document.getElementById("additionTable").addEventListener("click", additionTable);
+				document.getElementById("multiplicationTable").addEventListener("click", multiplicationTable);
+			}
+			window.addEventListener("load", createEventListeners, false);
+	</script>
+</body>
+</html>

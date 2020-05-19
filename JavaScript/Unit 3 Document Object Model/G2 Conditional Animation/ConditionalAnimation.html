@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<title>JackHammer</title>
+	<script>
+		var jackhammers = new Array();
+		var curJackhammer = 0;
+		var direction;
+		var begin;
+		jackhammers[0] = "jackhammer0.gif";
+		jackhammers[1] = "jackhammer1.gif";
+		jackhammers[2] = "jackhammer2.gif";
+		jackhammers[3] = "jackhammer3.gif";
+		jackhammers[4] = "jackhammer4.gif";
+		jackhammers[5] = "jackhammer5.gif";
+		jackhammers[6] = "jackhammer6.gif";
+		jackhammers[7] = "jackhammer7.gif";
+		jackhammers[8] = "jackhammer8.gif";
+		jackhammers[9] = "jackhammer9.gif";
+		jackhammers[10] = "jackhammer10.gif";
+		
+		function bounce() {
+			if (curJackhammer == 10) {
+				curJackhammer = 0;
+			}
+			else {
+				curJackhammer++;
+			}
+			document.getElementsByTagName('img')[0].src = 
+				jackhammers[curJackhammer];
+		}
+		
+		function startBouncing() {
+			if ( begin ) {
+				clearInterval ( begin );
+			}
+			begin = setInterval( "bounce()", 90);
+		}
+	</script>
+	</head>
+	<body>
+		<h1>Jackhammer Man</h1>
+		
+		<p><img src="jackhammer1.gif" width="113" height="100" 
+			alt="Image of a man with a jackhammer." /></p>
+			
+	<form action="upload" enctype="text/plain">
+	<p>
+		<input type="button" value="Start Bouncing" onclick="startBouncing();" />
+		<input type="button" value="Stop Bouncing" onclick="clearInterval(begin);" />
+	</p>
+	</form>
+</body>
+</html>
